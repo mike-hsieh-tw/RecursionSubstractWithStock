@@ -120,6 +120,10 @@ namespace ConsoleApp1
                             ACT_PURCHASE_QTY = item.QTY,   //  實際已分配，改為分配數量
                         });
 
+                        item.QTY = 0;   //  已分配取完了，改為0
+
+                        storageRuleModel.ALLOT_QTY = storageRuleModel.ALLOT_QTY - item.QTY;     //  已分配取完了，剩餘未分配改為 差值
+
                         item.IS_DONE = true;    //  分配結束
                     }
                 }
