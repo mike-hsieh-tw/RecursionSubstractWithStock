@@ -34,7 +34,7 @@ namespace ConsoleApp1
 
         List<PurchaseModel> purchaseModels = new List<PurchaseModel>()
         {
-            new PurchaseModel { CONT_NO ="EGHU9513033", MDL_CAT ="ZZZ", PART_NO ="KCD-250D1", QTY = 10 },
+            new PurchaseModel { CONT_NO ="EGHU9513033", MDL_CAT ="ZZZ", PART_NO ="KCD-250D1", QTY = 13 },
             new PurchaseModel { CONT_NO ="EGHU9513033", MDL_CAT ="ZZZ", PART_NO ="KDBD63A160", QTY = 10 },
             new PurchaseModel { CONT_NO ="EGHU9513033", MDL_CAT ="ZZZ", PART_NO ="KDDF37AA80", QTY = 10 },
         };
@@ -115,14 +115,14 @@ namespace ConsoleApp1
                             MDL_CAT = item.MDL_CAT,
                             PART_NO = item.PART_NO,
                             LCT_NO = storageRuleModel.LCT_NO,
-                            ALLOT_QTY = storageRuleModel.ALLOT_QTY, 
+                            ALLOT_QTY = storageRuleModel.ALLOT_QTY, //  設定檔分配數量
                             ALLOT_RATE = storageRuleModel.ALLOT_RATE,
                             ACT_PURCHASE_QTY = item.QTY,   //  實際已分配，改為分配數量
                         });
 
-                        item.QTY = 0;   //  已分配取完了，改為0
-
                         storageRuleModel.ALLOT_QTY = storageRuleModel.ALLOT_QTY - item.QTY;     //  已分配取完了，剩餘未分配改為 差值
+
+                        item.QTY = 0;   //  已分配取完了，改為0
 
                         item.IS_DONE = true;    //  分配結束
                     }
